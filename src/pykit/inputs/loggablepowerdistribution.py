@@ -16,11 +16,11 @@ class LoggedPowerDistribution:
         moduleId: int = 1,
         moduleType: PowerDistribution.ModuleType = PowerDistribution.ModuleType.kRev,
     ) -> None:
-        """
-        Creates a logged power distribution instance.
+        """Creates a logged power distribution instance.
 
         :param moduleId: The ID of the power distribution module.
         :param moduleType: The type of the power distribution module.
+
         """
         self.moduleId = moduleId
         self.moduleType = moduleType
@@ -31,12 +31,12 @@ class LoggedPowerDistribution:
     def getInstance(
         cls,
     ) -> "LoggedPowerDistribution":
-        """
-        Gets the singleton instance of the logged power distribution.
+        """Gets the singleton instance of the logged power distribution.
 
         :param moduleId: The ID of the power distribution module.
         :param moduleType: The type of the power distribution module.
         :return: The singleton instance of the logged power distribution.
+
         """
         if cls.instance is None:
             cls.instance = LoggedPowerDistribution()

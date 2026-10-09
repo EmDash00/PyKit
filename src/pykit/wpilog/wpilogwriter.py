@@ -22,11 +22,11 @@ ASCOPE_FILENAME = "ascope-log-path.txt"
 
 
 class WPILOGWriter(LogDataReciever):
-    """
-    A data receiver that writes log data to a `.wpilog` file.
+    """A data receiver that writes log data to a `.wpilog` file.
 
-    This class handles the creation and writing of log files in the standard
-    WPILib format, including automatic file naming and handling of data types.
+    This class handles the creation and writing of log files in the standard WPILib
+    format, including automatic file naming and handling of data types.
+
     """
 
     log: "DataLog"
@@ -49,16 +49,16 @@ class WPILOGWriter(LogDataReciever):
     entryUnits: dict[str, str]
 
     def __init__(self, filename: str | None = None, path: str | None = None) -> None:
-        """
-        Initializes the WPILOGWriter.
+        """Initializes the WPILOGWriter.
 
-        :param filename: The path to the `.wpilog` file. If None, a default path is used,
-                         and the file is named with a random identifier.
-        :param path: The directory to save the log file. If None, a default path is used based
-                         on whether it's running in simulation or on the robot.
+        :param filename: The path to the `.wpilog` file. If None, a default path is
+            used, and the file is named with a random identifier.
+        :param path: The directory to save the log file. If None, a default path is used
+            based on whether it's running in simulation or on the robot. in the event
+            that both a filename and a path are provided, the combination of the path
+            and the filename will be used in determining the location of where to put
+            the log file
 
-        in the event that both a filename and a path are provided, the combination of the path and
-        the filename will be used in determining the location of where to put the log file
         """
         actualPath = (
             (self.defaultPathSim if RobotBase.isSimulation() else self.defaultPathRio)
@@ -88,9 +88,8 @@ class WPILOGWriter(LogDataReciever):
         self.autoRename = filename is None
 
     def start(self) -> None:
-        """
-        Initializes the writer by creating the log file and preparing to write data.
-        """
+        """Initializes the writer by creating the log file and preparing to write
+        data."""
         # Create folder if necessary
         if not os.path.exists(self.folder):
             try:
@@ -127,9 +126,10 @@ class WPILOGWriter(LogDataReciever):
         self.logMatchText = ""
 
     def end(self) -> None:
-        """
-        Closes the log file and performs cleanup.
+        """Closes the log file and performs cleanup.
+
         In simulation, it can also trigger AdvantageScope to open the log.
+
         """
         print("[WPILogWriter] Shutting down")
         self.log.flush()
@@ -148,13 +148,13 @@ class WPILOGWriter(LogDataReciever):
         # DataLogManager.stop()
 
     def putTable(self, table: LogTable) -> None:
-        """
-        Writes a `LogTable` to the `.wpilog` file.
+        """Writes a `LogTable` to the `.wpilog` file.
 
         This method handles automatic file renaming, writing timestamp and data entries,
         and ensures that data is only written when it changes.
 
         :param table: The `LogTable` to write.
+
         """
         if not self.isOpen:
             return

@@ -11,9 +11,7 @@ class AlertLogger:
 
     @classmethod
     def periodic(cls, outputTable: LogTable) -> None:
-        """
-        Periodically checks for new alerts and logs them.
-        """
+        """Periodically checks for new alerts and logs them."""
         for group in cls.groups:
             outputTable.put(f"{group}/.type", "Alerts")
             if group not in cls.errorSubscribers:
@@ -40,10 +38,10 @@ class AlertLogger:
 
     @classmethod
     def registerGroup(cls, group: str) -> None:
-        """
-        Registers a new alert group to monitor.
+        """Registers a new alert group to monitor.
 
         :param group: The name of the alert group.
+
         """
         if group not in cls.groups:
             cls.groups.append(group)

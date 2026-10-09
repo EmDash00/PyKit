@@ -11,10 +11,10 @@ class LoggedDriverStation:
 
     @classmethod
     def saveToTable(cls, table: LogTable):
-        """
-        Saves the current state of the `DriverStation` to a `LogTable`.
+        """Saves the current state of the `DriverStation` to a `LogTable`.
 
         :param table: The `LogTable` to which the Driver Station data will be saved.
+
         """
         alliance = DriverStation.getAlliance()
         location = DriverStation.getLocation()
@@ -73,10 +73,10 @@ class LoggedDriverStation:
 
     @classmethod
     def loadFromTable(cls, table: LogTable):
-        """
-        Loads the state of the `DriverStation` from a `LogTable` for simulation.
+        """Loads the state of the `DriverStation` from a `LogTable` for simulation.
 
         :param table: The `LogTable` from which to load the Driver Station data.
+
         """
         DriverStationSim.setAllianceStationId(
             AllianceStationID(

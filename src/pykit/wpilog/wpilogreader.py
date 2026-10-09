@@ -11,11 +11,12 @@ T = TypeVar("T")
 
 
 def safeNext(val: Iterator[T]) -> None | T:
-    """
-    Safely gets the next item from an iterator, returning None if the iterator is exhausted.
+    """Safely gets the next item from an iterator, returning None if the iterator is
+    exhausted.
 
     :param val: The iterator.
     :return: The next item or None.
+
     """
     try:
         return next(val)
@@ -24,26 +25,24 @@ def safeNext(val: Iterator[T]) -> None | T:
 
 
 class WPILOGReader(LogReplaySource):
-    """
-    Reads a `.wpilog` file and provides the data as a replay source for the logger.
-    """
+    """Reads a `.wpilog` file and provides the data as a replay source for the
+    logger."""
 
     timestamp: int | None
 
     def __init__(self, filename: str) -> None:
-        """
-        Initializes the WPILOGReader.
+        """Initializes the WPILOGReader.
 
         :param filename: The path to the `.wpilog` file.
+
         """
         self.filename = filename
         # Predeclare records to satisfy typing before start() initializes it
         self.records: Iterator[DataLogRecord] = iter(())
 
     def start(self) -> None:
-        """
-        Initializes the reader by opening the log file and preparing to read records.
-        """
+        """Initializes the reader by opening the log file and preparing to read
+        records."""
         self.reader = DataLogReader(self.filename)
         self.isValid = (
             self.reader.isValid()
@@ -66,15 +65,15 @@ class WPILOGReader(LogReplaySource):
             )
 
     def updateTable(self, table: LogTable) -> bool:
-        """
-        Updates a LogTable with the next record from the log file.
+        """Updates a LogTable with the next record from the log file.
 
-        This method iterates through the log records, populating the provided
-        `LogTable` with data corresponding to a single timestamp.
+        This method iterates through the log records, populating the provided `LogTable`
+        with data corresponding to a single timestamp.
 
         :param table: The `LogTable` to update.
-        :return: True if the table was updated and there may be more data,
-                 False if the end of the log was reached.
+        :return: True if the table was updated and there may be more data, False if the
+            end of the log was reached.
+
         """
         if not self.isValid:
             return False
