@@ -1,4 +1,5 @@
 from ntcore import BooleanEntry, NetworkTableInstance
+
 from pykit.networktables.loggednetworkvalue import LoggedNetworkValue
 
 

@@ -1,6 +1,6 @@
-from wpimath.system.plant import DCMotor
-from pathplannerlib.config import ModuleConfig, RobotConfig
 from constants.math import kMetersPerInch
+from pathplannerlib.config import ModuleConfig, RobotConfig
+from wpimath.system.plant import DCMotor
 
 kMaxSpeedMetersPerSecond = 4.0
 kTrackWidth = 26 * kMetersPerInch

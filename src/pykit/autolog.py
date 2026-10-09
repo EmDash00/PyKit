@@ -1,7 +1,7 @@
-import typing
-import inspect
-import gc
 import dataclasses
+import gc
+import inspect
+import typing
 
 from wpiutil import wpistruct
 

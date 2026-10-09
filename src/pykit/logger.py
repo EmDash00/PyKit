@@ -1,8 +1,9 @@
-from typing import Any, Optional
 import sys
 import threading
+from typing import Any, Optional
 
 from wpilib import RobotController
+
 from pykit.alertlogger import AlertLogger
 from pykit.autolog import AutoLogInputManager, AutoLogOutputManager
 from pykit.inputs.loggableds import LoggedDriverStation

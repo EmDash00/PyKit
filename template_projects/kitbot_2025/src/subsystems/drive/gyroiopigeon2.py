@@ -1,13 +1,11 @@
+from constants import kRobotFrequency
+from constants.math import kRadiansPerDegree
 from phoenix6 import BaseStatusSignal
 from phoenix6.configs import Pigeon2Configuration
 from phoenix6.hardware.pigeon2 import Pigeon2
-from wpimath.geometry import Rotation2d
-
-from subsystems.drive.gyroio import GyroIO
 from subsystems.drive import driveconstants
-
-from constants import kRobotFrequency
-from constants.math import kRadiansPerDegree
+from subsystems.drive.gyroio import GyroIO
+from wpimath.geometry import Rotation2d
 
 
 class GyroIOPigeon2(GyroIO):

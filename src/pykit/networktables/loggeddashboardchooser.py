@@ -1,6 +1,7 @@
-from typing import Callable, Optional, Generic, TypeVar
+from typing import Callable, Generic, Optional, TypeVar
 
 from wpilib import SendableChooser, SmartDashboard
+
 from pykit.logger import Logger
 from pykit.logtable import LogTable
 from pykit.networktables.loggednetworkinput import LoggedNetworkInput

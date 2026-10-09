@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 import os
+
 import constants
-from pykit.wpilog.wpilogwriter import WPILOGWriter
-from pykit.wpilog.wpilogreader import WPILOGReader
-from pykit.networktables.nt4Publisher import NT4Publisher
+import wpilib
+
 from pykit.loggedrobot import LoggedRobot
 from pykit.logger import Logger
-
-import wpilib
+from pykit.networktables.nt4Publisher import NT4Publisher
+from pykit.wpilog.wpilogreader import WPILOGReader
+from pykit.wpilog.wpilogwriter import WPILOGWriter
 
 
 class Robot(LoggedRobot):

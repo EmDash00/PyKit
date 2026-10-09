@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
-from pykit.autolog import autolog
+
 from wpimath.geometry import Rotation2d
+
+from pykit.autolog import autolog
 
 
 class GyroIO:

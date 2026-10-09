@@ -1,10 +1,8 @@
-from rev import ClosedLoopSlot, SparkMax, SparkMaxConfig
-from subsystems.drive.driveio import DriveIO
-from subsystems.drive import driveconstants
-
-
 from constants.math import kRadiansPerRevolution, kSecondsPerMinute
-from util.sparkutil import tryUntilOk, isOk, isOkMulti
+from rev import ClosedLoopSlot, SparkMax, SparkMaxConfig
+from subsystems.drive import driveconstants
+from subsystems.drive.driveio import DriveIO
+from util.sparkutil import isOk, isOkMulti, tryUntilOk
 
 
 class DriveIOSpark(DriveIO):

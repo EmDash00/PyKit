@@ -1,22 +1,21 @@
 import os
 from typing import Optional
-from commands2 import Command, cmd
-from commands2.sysid import SysIdRoutine
-from commands2.button import CommandXboxController
-from pykit.networktables.loggeddashboardchooser import LoggedDashboardChooser
-from pathplannerlib.auto import AutoBuilder
-from wpilib import getDeployDirectory
 
+import constants
 from commands.drivecommands import DriveCommands
+from commands2 import Command, cmd
+from commands2.button import CommandXboxController
+from commands2.sysid import SysIdRoutine
+from pathplannerlib.auto import AutoBuilder
 from subsystems.drive.drive import Drive
 from subsystems.drive.driveio import DriveIO
 from subsystems.drive.driveiosim import DriveIOSim
 from subsystems.drive.driveiotalonfx import DriveIOTalonFX
-
 from subsystems.drive.gyroio import GyroIO
 from subsystems.drive.gyroiopigeon2 import GyroIOPigeon2
+from wpilib import getDeployDirectory
 
-import constants
+from pykit.networktables.loggeddashboardchooser import LoggedDashboardChooser
 
 
 class RobotContainer:

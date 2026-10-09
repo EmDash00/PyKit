@@ -12,6 +12,7 @@ from hal import (
     getTeamNumber,
 )
 from ntcore import NetworkTableInstance
+
 from pykit.logtable import LogTable
 
 

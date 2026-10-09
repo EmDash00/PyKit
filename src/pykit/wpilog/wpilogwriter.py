@@ -1,13 +1,13 @@
+import datetime
 import os
 import random
-import datetime
 from tempfile import gettempdir
-
 from typing import TYPE_CHECKING
 
 from hal import MatchType
 from wpilib import RobotBase, RobotController
 from wpiutil import DataLogWriter
+
 from pykit.logdatareciever import LogDataReciever
 from pykit.logger import Logger
 from pykit.logtable import LogTable

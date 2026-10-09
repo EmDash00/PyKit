@@ -1,4 +1,5 @@
 from typing import Callable
+
 from phoenix6.status_code import StatusCode
 
 

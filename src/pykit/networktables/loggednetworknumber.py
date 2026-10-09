@@ -1,4 +1,5 @@
 from ntcore import DoubleEntry, NetworkTableInstance
+
 from pykit.networktables.loggednetworkvalue import LoggedNetworkValue
 
 

@@ -1,15 +1,13 @@
+from constants import kRobotFrequency
+from constants.math import kRadiansPerRevolution
 from phoenix6 import BaseStatusSignal
 from phoenix6.configs import TalonFXConfiguration
 from phoenix6.configs.talon_fx_configs import NeutralModeValue
 from phoenix6.controls import VoltageOut
 from phoenix6.hardware.talon_fx import TalonFX
-from subsystems.roller.rollerio import RollerIO
 from subsystems.roller import rollerconstants
-
+from subsystems.roller.rollerio import RollerIO
 from util.phoenixutil import tryUntilOk
-
-from constants import kRobotFrequency
-from constants.math import kRadiansPerRevolution
 
 
 class RollerIOTalonFX(RollerIO):

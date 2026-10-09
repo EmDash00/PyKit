@@ -1,12 +1,11 @@
 from typing import Callable
-from commands2 import Command, cmd
-from wpilib import Timer
-from wpilib.drive import DifferentialDrive
 
+from commands2 import Command, cmd
+from subsystems.drive import driveconstants
 from subsystems.drive.drive import Drive
 from util.helpfulmath import deadband
-
-from subsystems.drive import driveconstants
+from wpilib import Timer
+from wpilib.drive import DifferentialDrive
 
 
 class DriveCommands:

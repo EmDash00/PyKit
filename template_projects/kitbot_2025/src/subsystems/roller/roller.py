@@ -1,8 +1,9 @@
 from typing import Callable
-from commands2 import Command, Subsystem, cmd
-from pykit.logger import Logger
 
+from commands2 import Command, Subsystem, cmd
 from subsystems.roller.rollerio import RollerIO
+
+from pykit.logger import Logger
 
 
 class Roller(Subsystem):

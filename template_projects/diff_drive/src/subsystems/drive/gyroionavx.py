@@ -1,8 +1,7 @@
-from wpimath.geometry import Rotation2d
-from subsystems.drive.gyroio import GyroIO
-from navx import AHRS
-
 from constants.math import kRadiansPerDegree
+from navx import AHRS
+from subsystems.drive.gyroio import GyroIO
+from wpimath.geometry import Rotation2d
 
 
 class GyroIONavX(GyroIO):

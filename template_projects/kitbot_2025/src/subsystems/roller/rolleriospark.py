@@ -1,9 +1,8 @@
-from rev import SparkMax, SparkMaxConfig
-from subsystems.roller.rollerio import RollerIO
-from subsystems.roller import rollerconstants
-
 from constants.math import kRadiansPerRevolution, kSecondsPerMinute
-from util.sparkutil import tryUntilOk, isOk
+from rev import SparkMax, SparkMaxConfig
+from subsystems.roller import rollerconstants
+from subsystems.roller.rollerio import RollerIO
+from util.sparkutil import isOk, tryUntilOk
 
 
 class RollerIOSpark(RollerIO):

@@ -1,6 +1,7 @@
 from typing import Any, Optional, Set, cast
 
 from wpiutil import wpistruct
+
 from pykit.logvalue import LogValue
 
 

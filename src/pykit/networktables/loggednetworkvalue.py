@@ -6,6 +6,7 @@ from ntcore import (
     IntegerEntry,
     StringEntry,
 )
+
 from pykit.logger import Logger
 from pykit.logtable import LogTable
 from pykit.networktables.loggednetworkinput import LoggedNetworkInput

@@ -1,3 +1,5 @@
+from constants import kRobotFrequency
+from constants.math import kRadiansPerRevolution
 from phoenix6.configs import TalonFXConfiguration
 from phoenix6.configs.talon_fx_configs import InvertedValue, NeutralModeValue
 from phoenix6.controls.follower import Follower
@@ -5,12 +7,8 @@ from phoenix6.controls.velocity_voltage import VelocityVoltage
 from phoenix6.controls.voltage_out import VoltageOut
 from phoenix6.hardware.core.core_talon_fx import BaseStatusSignal
 from phoenix6.hardware.talon_fx import TalonFX
-from subsystems.drive.driveio import DriveIO
 from subsystems.drive import driveconstants
-
-from constants import kRobotFrequency
-from constants.math import kRadiansPerRevolution
-
+from subsystems.drive.driveio import DriveIO
 from util.phoenixutil import tryUntilOk
 
 
