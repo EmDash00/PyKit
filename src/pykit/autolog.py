@@ -2,6 +2,7 @@ import dataclasses
 import gc
 import inspect
 import typing
+from typing import Any, Protocol, Type
 
 from wpiutil import wpistruct
 
@@ -9,17 +10,17 @@ from pykit.logtable import LogTable
 from pykit.logvalue import LogValue
 
 
-class _HasAutoLogInfo(typing.Protocol):
-    _autolog_output_info: typing.Dict[str, typing.Any]
+class _HasAutoLogInfo(Protocol):
+    _autolog_output_info: dict[str, Any]
 
 
 class AutoLogInputManager:
     """A manager class for handling automatic input loading of dataclass fields."""
 
-    logged_classes: typing.List[typing.Any] = []
+    logged_classes: list[Any] = []
 
     @classmethod
-    def register_class(cls, class_to_register: typing.Any):
+    def register_class(cls, class_to_register: Any):
         """Registers a class for automatic input loading.
 
         :param class_to_register: The class type to register.
@@ -28,7 +29,7 @@ class AutoLogInputManager:
         cls.logged_classes.append(class_to_register)
 
     @classmethod
-    def getInputs(cls) -> typing.List[typing.Any]:
+    def getInputs(cls) -> list[Any]:
         """Returns the list of registered classes for input loading.
 
         :return: A list of registered classes.
@@ -49,11 +50,9 @@ class AutoLogOutputManager:
     #   'log_type': LogValue.LoggableType (the type to log as)
     #   'custom_type': str (optional custom type string)
     #   'unit': str (optional unit string)
-    logged_members: typing.Dict[
-        typing.Type, typing.List[typing.Dict[str, typing.Any]]
-    ] = {}
+    logged_members: dict[Type, list[dict[str, Any]]] = {}
 
-    root_cache: typing.List[typing.Any] = []
+    root_cache: list[Any] = []
 
     @classmethod
     def publish_all(cls, table: LogTable, root_instance=None):
@@ -101,13 +100,13 @@ class AutoLogOutputManager:
     @classmethod
     def register_member(
         cls,
-        class_type: typing.Type,
+        class_type: Type,
         member_name: str,
         is_method: bool,
-        log_type: typing.Optional[LogValue.LoggableType],
+        log_type: LogValue.LoggableType | None,
         key: str = "",
         custom_type: str = "",
-        unit: typing.Optional[str] = None,
+        unit: str | None = None,
     ):
         """Registers a member (field or method) of a class for automatic output logging.
 
@@ -134,7 +133,7 @@ class AutoLogOutputManager:
         )
 
     @classmethod
-    def publish(cls, instance: typing.Any, table: LogTable):
+    def publish(cls, instance: Any, table: LogTable):
         """Publishes the values of all registered members of an instance to a LogTable.
 
         :param instance: The instance whose members are to be published.
@@ -176,9 +175,9 @@ class AutoLogOutputManager:
 
 def autolog_output(
     key: str,
-    log_type: typing.Optional[LogValue.LoggableType] = None,
+    log_type: LogValue.LoggableType | None = None,
     custom_type: str = "",
-    unit: typing.Optional[str] = None,
+    unit: str | None = None,
 ):
     """
     A decorator for methods or fields in a class to automatically log their output.
@@ -200,7 +199,7 @@ def autolog_output(
     :return: A decorator function.
     """
 
-    def decorator(member: typing.Any):
+    def decorator(member: Any):
         # This part is tricky because Python decorators for methods/fields
         # don't directly give you the class at definition time.
         # We'll store a temporary attribute and process it in a class decorator.
@@ -253,9 +252,7 @@ def autologgable_output(cls):
                 cls,
                 name,
                 bool(info.get("is_method", False)),
-                typing.cast(
-                    typing.Optional[LogValue.LoggableType], info.get("log_type")
-                ),
+                typing.cast(LogValue.LoggableType | None, info.get("log_type")),
                 typing.cast(str, info.get("key", name)),
                 typing.cast(str, info.get("custom_type", "")),
                 typing.cast(str, info.get("unit", "")),
@@ -316,7 +313,7 @@ def autolog(cls=None, /):
                 else:
                     # Load primitive types and arrays from log table
                     field_type = resolved_hints[name]
-                    new_value: typing.Any = None
+                    new_value: Any = None
 
                     origin = typing.get_origin(field_type)
                     if origin is list:

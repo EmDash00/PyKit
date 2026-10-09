@@ -1,4 +1,4 @@
-from typing import Generic, Protocol, TypeVar, Union
+from typing import Generic, Protocol, TypeVar
 
 from ntcore import (
     BooleanEntry,
@@ -11,13 +11,9 @@ from pykit.logger import Logger
 from pykit.logtable import LogTable
 from pykit.networktables.loggednetworkinput import LoggedNetworkInput
 
-NTEntry = Union[
-    DoubleEntry,
-    BooleanEntry,
-    StringEntry,
-    IntegerEntry,
-]
-PyNTValue = Union[float, bool, str, int]
+NTEntry = DoubleEntry | BooleanEntry | StringEntry | IntegerEntry
+
+PyNTValue = float | bool | str | int
 
 T = TypeVar("T", bound=PyNTValue)
 

@@ -1,5 +1,3 @@
-from typing import Optional
-
 import constants
 from commands2 import Subsystem
 from commands2.sysid import SysIdRoutine
@@ -115,7 +113,7 @@ class Drive(Subsystem):
         )
 
     def runClosedLoop(
-        self, speeds: ChassisSpeeds, _feedForwards: Optional[DriveFeedforwards] = None
+        self, speeds: ChassisSpeeds, _feedForwards: DriveFeedforwards | None = None
     ):
         wheelSpeeds = self.kinematics.toWheelSpeeds(speeds)
         self.runClosedLoopParameters(wheelSpeeds.left, wheelSpeeds.right)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-from typing import Optional
 
 import constants
 import wpilib
@@ -16,7 +15,7 @@ from pykit.wpilog.wpilogwriter import WPILOGWriter
 
 
 class DiffDrive(LoggedRobot):
-    autonomousCommand: Optional[Command] = None
+    autonomousCommand: Command | None = None
 
     def __init__(self) -> None:
         super().__init__()

@@ -1,4 +1,4 @@
-from typing import Callable, Generic, Optional, TypeVar
+from typing import Callable, Generic, TypeVar
 
 from wpilib import SendableChooser, SmartDashboard
 
@@ -19,8 +19,8 @@ class LoggedDashboardChooser(LoggedNetworkInput, Generic[T]):
 
     key: str
     selectedValue: str = ""
-    previousValue: Optional[str]
-    listener: Optional[Callable[[T], None]]
+    previousValue: str | None
+    listener: Callable[[T], None] | None
 
     sendableChooser: SendableChooser
 
@@ -61,7 +61,7 @@ class LoggedDashboardChooser(LoggedNetworkInput, Generic[T]):
         self.sendableChooser.setDefaultOption(key, key)
         self.options[key] = value
 
-    def getSelected(self) -> Optional[T]:
+    def getSelected(self) -> T | None:
         """Gets the currently selected value.
 
         :return: The selected value, or None if no value is selected.

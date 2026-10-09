@@ -1,5 +1,4 @@
 import os
-from typing import Optional
 
 import constants
 from commands.drivecommands import DriveCommands
@@ -91,5 +90,5 @@ class RobotContainer:
             )
         )
 
-    def getAutonomousCommand(self) -> Optional[Command]:
+    def getAutonomousCommand(self) -> Command | None:
         return self.autoChooser.getSelected()

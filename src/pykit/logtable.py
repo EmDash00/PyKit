@@ -1,4 +1,4 @@
-from typing import Any, Optional, Set, cast
+from typing import Any, cast
 
 from wpiutil import wpistruct
 
@@ -109,7 +109,7 @@ class LogTable:
 
         self.data[key] = LogValue(schema.encode(), "structschema")
 
-    def addStructSchema(self, struct: Any, seen: Set[str]):
+    def addStructSchema(self, struct: Any, seen: set[str]):
         """Adds the schema for a WPILib struct and its nested structs to the log table.
 
         :param struct: The struct instance.
@@ -129,7 +129,7 @@ class LogTable:
         wpistruct.forEachNested(struct.__class__, self.addStructSchemaNest)
         seen.remove(typeString)
 
-    def put(self, key: str, value: Any, typeStr: str = "", unit: Optional[str] = None):
+    def put(self, key: str, value: Any, typeStr: str = "", unit: str | None = None):
         """Puts a value into the log table, automatically handling WPILib structs and
         arrays. The value is wrapped in a `LogValue` object.
 

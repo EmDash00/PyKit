@@ -1,6 +1,6 @@
 import sys
 import threading
-from typing import Any, Optional
+from typing import Any
 
 from wpilib import RobotController
 
@@ -60,7 +60,7 @@ class _ConsoleRecorder:
 class Logger:
     """Manages the logging and replay of data for the robot."""
 
-    replaySource: Optional[LogReplaySource] = None
+    replaySource: LogReplaySource | None = None
     running: bool = False
     cycleCount: int = 0
     entry: LogTable = LogTable(0)
@@ -69,11 +69,11 @@ class Logger:
     checkConsole: bool = True
 
     # Internal fields for console capturing
-    _orig_stdout: Optional[Any] = None
-    _orig_stderr: Optional[Any] = None
+    _orig_stdout: Any | None = None
+    _orig_stderr: Any | None = None
     _console_wrapped: bool = False
-    _console_recorder_stdout: Optional[Any] = None
-    _console_recorder_stderr: Optional[Any] = None
+    _console_recorder_stdout: Any | None = None
+    _console_recorder_stderr: Any | None = None
 
     dataRecievers: list[LogDataReciever] = []
     dashboardInputs: list[LoggedNetworkInput] = []
@@ -97,7 +97,7 @@ class Logger:
         return cls.replaySource is not None
 
     @classmethod
-    def recordOutput(cls, key: str, value: Any, unit: Optional[str] = None):
+    def recordOutput(cls, key: str, value: Any, unit: str | None = None):
         """Records an output value to the log table.
 
         This is only active when not in replay mode.
