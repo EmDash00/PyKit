@@ -69,7 +69,8 @@ class AutoLogOutputManager:
             from. If None, it scans for all instances of registered classes.
 
         """
-        # Build root instance list from cache or by scanning for registered class instances
+        # Build root instance list from cache
+        # or by scanning for registered class instances
         if root_instance is None:
             if cls.root_cache:
                 root_instance = cls.root_cache
@@ -192,7 +193,8 @@ def autolog_output(
                 return self.my_value
 
     :param key: The key to use for logging the member's value.
-    :param log_type: The `LogValue.LoggableType` to log the value as. If None, it's inferred.
+    :param log_type:
+        The `LogValue.LoggableType` to log the value as. If None, it's inferred.
     :param custom_type: A custom type string for the log entry.
     :param unit: The unit string for the log entry.
     :return: A decorator function.
@@ -334,7 +336,8 @@ def autolog(cls=None, /):
                             )
                         else:
                             print(
-                                f"[AutoLog] Failed to read of type {field_type} with value {list_type}"
+                                f"[AutoLog] Failed to read of type {field_type}"
+                                f" with value {list_type}"
                             )
                     else:
                         if field_type is bool:

@@ -3,8 +3,8 @@ from typing import Callable
 from rev import REVLibError, SparkBase
 
 
-def tryUntilOk(attemps: int, command: Callable[[], REVLibError]):
-    for _ in range(attemps):
+def tryUntilOk(attempts: int, command: Callable[[], REVLibError]):
+    for _ in range(attempts):
         error = command()
         if error == REVLibError.kOk:
             break

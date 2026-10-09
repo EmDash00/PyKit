@@ -82,12 +82,14 @@ class LogTable:
             return True
         if currentVal.log_type != logType:
             print(
-                f"Failed to write {key}:\nAttempted {logType} but type is {currentVal.log_type}"
+                f"Failed to write {key}:\nAttempted {logType}"
+                f"but type is {currentVal.log_type}"
             )
             return False
         if customType != currentVal.custom_type:
             print(
-                f"Failed to write {key}:\nAttempted {customType} but type is {currentVal.custom_type}"
+                f"Failed to write {key}:\nAttempted {customType}"
+                f"but type is {currentVal.custom_type}"
             )
             return False
         return True
@@ -164,7 +166,8 @@ class LogTable:
         :param log_value: The `LogValue` object to be stored.
 
         """
-        # Handle empty array edge case - match type to previous entry to avoid type mismatch
+        # Handle empty array edge case
+        # i.e., match type to previous entry to avoid type mismatch
         if isinstance(log_value.value, list) and len(log_value.value) == 0:
             currentVal = self.data.get(self.prefix + key)
             if currentVal is not None:

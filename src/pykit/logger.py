@@ -36,7 +36,8 @@ class _ConsoleRecorder:
                 while "\n" in self.buffer:
                     line, self.buffer = self.buffer.split("\n", 1)
                     try:
-                        # Logger may not yet be initialized when class is defined; reference at runtime
+                        # Logger may not yet be initialized when class is defined;
+                        # reference at runtime
                         Logger.recordOutput("Console", line)
                     except (AttributeError, RuntimeError, ValueError):
                         # Logger may not be ready or the logging backend raised an error
@@ -138,13 +139,13 @@ class Logger:
                 inputs.toLog(cls.entry, prefix)
 
     @classmethod
-    def addDataReciever(cls, reciever: LogDataReciever):
+    def addDataReciever(cls, receiver: LogDataReciever):
         """Adds a data receiver to the logger.
 
-        :param reciever: The `LogDataReciever` to add.
+        :param receiver: The `LogDataReciever` to add.
 
         """
-        cls.dataRecievers.append(reciever)
+        cls.dataRecievers.append(receiver)
 
     @classmethod
     def registerDashboardInput(cls, dashboardInput: LoggedNetworkInput):
@@ -206,8 +207,8 @@ class Logger:
     @classmethod
     def startReciever(cls):
         """Starts all registered data receivers."""
-        for reciever in cls.dataRecievers:
-            reciever.start()
+        for receiver in cls.dataRecievers:
+            receiver.start()
 
     @classmethod
     def end(cls):
@@ -238,8 +239,8 @@ class Logger:
                     rs.end()
 
             RobotController.setTimeSource(RobotController.getFPGATime)
-            for reciever in cls.dataRecievers:
-                reciever.end()
+            for receiver in cls.dataRecievers:
+                receiver.end()
 
     @classmethod
     def getTimestamp(cls) -> int:
@@ -276,7 +277,8 @@ class Logger:
                     print("End of replay reached")
                     if cls.cycleCount == 1:
                         print(
-                            "[ERROR] This robot did not start properly, is the replay logfile from PyKit?"
+                            "[ERROR] This robot did not start properly, "
+                            "is the replay logfile from PyKit?"
                         )
                     else:
                         cls.end()
@@ -368,5 +370,5 @@ class Logger:
             )
 
             # Send log table to all receivers (file writer, NetworkTables, etc.)
-            for reciever in cls.dataRecievers:
-                reciever.putTable(LogTable.clone(cls.entry))
+            for receiver in cls.dataRecievers:
+                receiver.putTable(LogTable.clone(cls.entry))

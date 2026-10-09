@@ -103,7 +103,9 @@ class WPILOGReader(LogReplaySource):
                             assert self.timestamp is not None
                             table.setTimestamp(self.timestamp)
                         else:
-                            keepLogging = True  # we still have a timestamp, just need to wait until next iter
+                            # we still have a timestamp, just need to
+                            # wait until next iter
+                            keepLogging = True
                             break
                     elif (
                         self.timestamp is not None
