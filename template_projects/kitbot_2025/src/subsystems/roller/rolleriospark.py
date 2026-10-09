@@ -20,11 +20,7 @@ class RollerIOSpark(RollerIO):
             kRadiansPerRevolution / rollerconstants.kMotorReduction
         ).velocityConversionFactor(
             kRadiansPerRevolution / kSecondsPerMinute / rollerconstants.kMotorReduction
-        ).uvwMeasurementPeriod(
-            10
-        ).uvwAverageDepth(
-            2
-        )
+        ).uvwMeasurementPeriod(10).uvwAverageDepth(2)
 
         tryUntilOk(
             5,

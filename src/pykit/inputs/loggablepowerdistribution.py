@@ -4,7 +4,6 @@ from pykit.logtable import LogTable
 
 
 class LoggedPowerDistribution:
-
     moduleId: int
     moduleType: PowerDistribution.ModuleType
     distribution: PowerDistribution

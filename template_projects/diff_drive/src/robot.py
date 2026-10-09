@@ -16,7 +16,6 @@ from pykit.wpilog.wpilogwriter import WPILOGWriter
 
 
 class DiffDrive(LoggedRobot):
-
     autonomousCommand: Optional[Command] = None
 
     def __init__(self) -> None:

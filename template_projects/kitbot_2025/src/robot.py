@@ -16,7 +16,6 @@ from pykit.wpilog.wpilogwriter import WPILOGWriter
 
 
 class KitBot2025(LoggedRobot):
-
     autonomousCommand: Optional[Command] = None
 
     def __init__(self) -> None:

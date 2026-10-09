@@ -6,7 +6,6 @@ from util.sparkutil import isOk, isOkMulti, tryUntilOk
 
 
 class DriveIOSpark(DriveIO):
-
     def __init__(self) -> None:
         self.leftLeader = SparkMax(
             driveconstants.kLeftLeaderCanId, SparkMax.MotorType.kBrushless
@@ -36,11 +35,7 @@ class DriveIOSpark(DriveIO):
             kRadiansPerRevolution / driveconstants.kMotorReduction
         ).velocityConversionFactor(
             kRadiansPerRevolution / kSecondsPerMinute / driveconstants.kMotorReduction
-        ).uvwMeasurementPeriod(
-            10
-        ).uvwAverageDepth(
-            2
-        )
+        ).uvwMeasurementPeriod(10).uvwAverageDepth(2)
 
         config.inverted(driveconstants.kLeftInverted)
         tryUntilOk(
