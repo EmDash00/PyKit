@@ -1,25 +1,34 @@
 [build-system]
-requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
+requires = [ "uv-build>=0.9.18,<0.10" ]
 
 [project]
 name = "robotpy-pykit"
 version = "1.0.5"
 description = "A logging, telemetry, and replay framework for FRC robots running python"
 readme = "README.md"
-authors = [{ name = "Luke Maxwell", email = "luke@whsrobotics.org" }]
+keywords = [ "frc", "logging", "pykit", "replay", "robotics", "telemetry" ]
 license = "BSD-3-Clause"
-license-files = ["LICENSE"]
-keywords = ["pykit", "frc", "robotics", "logging", "telemetry", "replay"]
-dependencies = [
-    "pyntcore >=2026.1.1",
-    "robotpy-wpimath >=2026.1.1",
-    "robotpy-wpiutil >=2026.1.1",
-    "wpilib>=2026.1.1",
-    "robotpy-hal >=2026.1.1",
-    "pyfrc >= 2026.0.1",
-]
+license-files = [ "LICENSE" ]
+authors = [ { name = "Luke Maxwell", email = "luke@whsrobotics.org" } ]
 requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "pyfrc>=2026.0.1",
+    "pyntcore>=2026.1.1",
+    "robotpy-hal>=2026.1.1",
+    "robotpy-wpimath>=2026.1.1",
+    "robotpy-wpiutil>=2026.1.1",
+    "wpilib>=2026.1.1",
+]
+urls.Homepage = "https://github.com/1757WestwoodRobotics/PyKit"
 
 [dependency-groups]
 dev = [
@@ -30,24 +39,8 @@ dev = [
     "ruff>=0.16.10",
 ]
 
-[project.urls]
-Homepage = "https://github.com/1757WestwoodRobotics/PyKit"
-
-[tool.mypy]
-python_version = "3.13"
-warn_unused_configs = true
-explicit_package_bases = true
-mypy_path = "."
-ignore_missing_imports = true
-warn_unused_ignores = true
-warn_no_return = true
-
-[tool.uv.build-backend]
-module-name = "pykit"
-
-[[tool.mypy.overrides]]
-module = ["untyped_package.*"]
-follow_untyped_imports = true
+[tool.uv]
+build-backend.module-name = "pykit"
 
 [tool.ruff]
 target-version = "py313"
@@ -104,6 +97,16 @@ column_width = 88
 indent = 4
 keep_full_version = false
 max_supported_python = "3.14"
+
+[tool.mypy]
+mypy_path = "."
+explicit_package_bases = true
+ignore_missing_imports = true
+python_version = "3.13"
+warn_unused_ignores = true
+warn_no_return = true
+warn_unused_configs = true
+overrides = [ { module = [ "untyped_package.*" ], follow_untyped_imports = true } ]
 
 [tool.pyright]
 venv = ".venv"
