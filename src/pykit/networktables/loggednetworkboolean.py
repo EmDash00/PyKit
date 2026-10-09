@@ -1,9 +1,9 @@
-from ntcore import BooleanEntry, NetworkTableInstance
+from ntcore import NetworkTableInstance
 
 from pykit.networktables.loggednetworkvalue import LoggedNetworkValue
 
 
-class LoggedNetworkBoolean(LoggedNetworkValue[bool, BooleanEntry]):
+class LoggedNetworkBoolean(LoggedNetworkValue[bool]):
     """A loggable network value for booleans.
 
     This class provides a convenient way to interact with boolean values on

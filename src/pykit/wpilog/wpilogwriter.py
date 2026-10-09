@@ -119,9 +119,9 @@ class WPILOGWriter(LogDataReciever):
         )
         self.lastTable = LogTable(0)
 
-        self.entryIds: dict[str, int] = {}
-        self.entryTypes: dict[str, LogValue.LoggableType] = {}
-        self.entryUnits: dict[str, str] = {}
+        self.entryIds = {}
+        self.entryTypes = {}
+        self.entryUnits = {}
         self.logDate = None
         self.logMatchText = ""
 
@@ -166,7 +166,7 @@ class WPILOGWriter(LogDataReciever):
                     and table.get("SystemStats/SystemTimeValid", False)
                 ) or RobotBase.isSimulation():
                     if self.dsAttachedTime == 0:
-                        self.dsAttachedTime = RobotController.getFPGATime() / 1e6
+                        self.dsAttachedTime = int(RobotController.getFPGATime() / 1e6)
                     elif (
                         RobotController.getFPGATime() / 1e6 - self.dsAttachedTime
                     ) > 5 or RobotBase.isSimulation():

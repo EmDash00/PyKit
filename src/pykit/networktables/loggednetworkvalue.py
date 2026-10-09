@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar, Union
+from typing import Generic, Protocol, TypeVar, Union
 
 from ntcore import (
     BooleanEntry,
@@ -20,10 +20,17 @@ NTEntry = Union[
 PyNTValue = Union[float, bool, str, int]
 
 T = TypeVar("T", bound=PyNTValue)
-V = TypeVar("V", bound=NTEntry)
 
 
-class LoggedNetworkValue(LoggedNetworkInput, Generic[T, V]):
+class TypedNTEntry(Protocol[T]):
+    def set(self, value: T, /) -> None: ...
+    def get(self, defaultValue: T, /) -> T: ...
+    def setDefault(self, defaultValue: T, /) -> None: ...
+
+    # def getDefault(self) -> T: ...
+
+
+class LoggedNetworkValue(LoggedNetworkInput, Generic[T]):
     """A generic base class for loggable NetworkTables values.
 
     This class provides a common framework for handling different types of NetworkTables
@@ -33,7 +40,7 @@ class LoggedNetworkValue(LoggedNetworkInput, Generic[T, V]):
 
     _value: T
     _defaultValue: T
-    _entry: V
+    _entry: TypedNTEntry[T]
 
     def __init__(self, key: str, defaultValue: T) -> None:
         """Initializes a LoggedNetworkValue.

@@ -29,7 +29,7 @@ class LogTable:
         self._timestamp = timestamp
         self.prefix = prefix
         self.depth = 0
-        self.data: dict[str, LogValue] = {}
+        self.data = {}
 
     @staticmethod
     def clone(source: "LogTable"):

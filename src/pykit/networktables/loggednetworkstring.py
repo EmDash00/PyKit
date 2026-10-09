@@ -1,9 +1,9 @@
-from ntcore import NetworkTableInstance, StringEntry
+from ntcore import NetworkTableInstance
 
 from pykit.networktables.loggednetworkvalue import LoggedNetworkValue
 
 
-class LoggedNetworkString(LoggedNetworkValue[str, StringEntry]):
+class LoggedNetworkString(LoggedNetworkValue[str]):
     """A loggable network value for strings.
 
     This class provides a convenient way to interact with string values on NetworkTables

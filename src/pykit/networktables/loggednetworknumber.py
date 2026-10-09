@@ -1,9 +1,9 @@
-from ntcore import DoubleEntry, NetworkTableInstance
+from ntcore import NetworkTableInstance
 
 from pykit.networktables.loggednetworkvalue import LoggedNetworkValue
 
 
-class LoggedNetworkNumber(LoggedNetworkValue[float, DoubleEntry]):
+class LoggedNetworkNumber(LoggedNetworkValue[float]):
     """A loggable network value for numbers (doubles).
 
     This class provides a convenient way to interact with numeric values on
