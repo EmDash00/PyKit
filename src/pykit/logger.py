@@ -98,8 +98,9 @@ class Logger:
 
     @classmethod
     def recordOutput(cls, key: str, value: Any, unit: Optional[str] = None):
-        """Records an output value to the log table. This is only active when not in
-        replay mode.
+        """Records an output value to the log table.
+
+        This is only active when not in replay mode.
 
         :param key: The key under which to record the value.
         :param value: The value to record.
@@ -110,8 +111,9 @@ class Logger:
 
     @classmethod
     def recordMetadata(cls, key: str, value: str):
-        """Records metadata information. This is only active when not in replay mode.
+        """Records metadata information.
 
+        This is only active when not in replay mode.
         :param key: The key for the metadata.
         :param value: The metadata value.
 
@@ -244,9 +246,10 @@ class Logger:
 
     @classmethod
     def getTimestamp(cls) -> int:
-        """Returns the current timestamp for logging. In replay mode, it gets the
-        timestamp from the log entry. In normal mode, it gets the current FPGA
-        timestamp.
+        """Returns the current timestamp for logging.
+
+        In replay mode, it gets the timestamp from the log entry. In normal mode, it
+        gets the current FPGA timestamp.
 
         :return: The current timestamp in microseconds.
 
@@ -312,9 +315,10 @@ class Logger:
 
     @classmethod
     def periodicAfterUser(cls, userCodeLength: int, periodicBeforeLength: int):
-        """Called periodically after the user's robot code. This method finalizes the
-        log entry for the current cycle by recording outputs, performance data, and then
-        sends the log table to all registered receivers.
+        """Called periodically after the user's robot code.
+
+        This method finalizes the log entry for the current cycle by recording outputs,
+        performance data, and then sends the log table to all registered receivers.
 
         :param userCodeLength: The execution time of the user's code in microseconds.
         :param periodicBeforeLength: The execution time of the `periodicBeforeUser`

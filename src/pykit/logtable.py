@@ -69,8 +69,9 @@ class LogTable:
         logType: LogValue.LoggableType,
         customType: str,
     ) -> bool:
-        """Checks if a write operation is allowed for a given key and type. Prevents
-        changing the type of an existing log entry.
+        """Checks if a write operation is allowed for a given key and type.
+
+        Prevents changing the type of an existing log entry.
 
         :param key: The key of the log entry.
         :param logType: The `LoggableType` of the new value.
