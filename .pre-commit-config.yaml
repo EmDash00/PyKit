@@ -1,0 +1,33 @@
+repos:
+  - repo: local
+    hooks:
+      - id: docformatter
+        name: docformatter
+        entry: uv run --no-sync docformatter
+        language: system
+        types: [python]
+
+      - id: ruff
+        name: ruff
+        entry: uv run --no-sync ruff check --fix
+        language: system
+        types: [python]
+
+      - id: ruff-format
+        name: Ruff format
+        entry: uv run --no-sync ruff format
+        language: system
+        types: [python]
+
+      - id: basedpyright
+        name: basedpyright
+        entry: uv run --no-sync basedpyright
+        language: system
+        types: [python]
+
+      - id: pyproject-fmt
+        name: pyproject-fmt
+        entry: uv run --no-sync pyproject-fmt pyproject.toml
+        language: system
+        types: [toml]
+        files: ^pyproject\.toml$
