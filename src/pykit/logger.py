@@ -4,8 +4,8 @@ from typing import Any
 
 from wpilib import RobotController
 
+import pykit.autolog as autolog
 from pykit.alertlogger import AlertLogger
-from pykit.autolog import AutoLogInputManager, AutoLogOutputManager
 from pykit.inputs.loggableds import LoggedDriverStation
 from pykit.inputs.loggablepowerdistribution import LoggedPowerDistribution
 from pykit.inputs.loggablesystemstats import LoggedSystemStats
@@ -337,8 +337,12 @@ class Logger:
                     cls.entry.getSubTable("PowerDistribution")
                 )
             autoLogStart = RobotController.getFPGATime()
-            # Publish all auto-logged outputs
-            AutoLogOutputManager.publish_all(cls.outputTable)
+
+            # Publish all autlog entries
+            autolog._publish_all(
+                cls.outputTable, cls.entry.getSubTable("/"), cls.isReplay()
+            )
+
             alertLogStart = RobotController.getFPGATime()
             AlertLogger.periodic(cls.outputTable)
             alertLogEnd = RobotController.getFPGATime()
@@ -349,12 +353,6 @@ class Logger:
                 cls.recordOutput(
                     "Logger/SystemStatsMS", (autoLogStart - systemStart) / 1000.0
                 )
-                # Log all auto-logged inputs
-                for logged_input in AutoLogInputManager.getInputs():
-                    logged_input.toLog(
-                        cls.entry.getSubTable("/"),
-                        "/" + logged_input.__class__.__name__,
-                    )
 
             cls.recordOutput(
                 "Logger/AutoLogOutputMS", (alertLogStart - autoLogStart) / 1000.0
